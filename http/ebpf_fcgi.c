@@ -182,7 +182,7 @@ html_ait_map()
         printf("<tr>");
         printf("<td>%" PRIu32 "</td>", key);
         printf("<td>%s</td>", ait_map_label(key));
-        printf("<td>%" PRId64 "</td>", (__s64)value);
+        printf("<td>%" PRId64 "</td>", (long int)value);
         printf("<td><tt>%02x %02x %02x %02x %02x %02x %02x %02x</tt></td>",
             bp[0], bp[1], bp[2], bp[3], bp[4], bp[5], bp[6], bp[7]);
         printf("</tr>\n");
@@ -258,7 +258,7 @@ json_ait_map()
         printf(",");
 
         printf("\"n\":");
-        printf("%" PRId64, (__s64)value);
+        printf("%" PRId64, (long int)value);
         printf(",");
 
         printf("\"s\":");

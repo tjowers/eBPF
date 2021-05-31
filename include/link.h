@@ -31,6 +31,8 @@ typedef struct user_state {
 typedef struct link_state {
     __u8        inbound[44];    // inbound data buffer
     __u32       link_flags;     // flags controller by link
+    __u8        outbound[44];   // outbound data buffer
+    __u32       user_flags;     // flags controller by user
     __u8        frame[64];      // transport frame
     protocol_t  i;              // local protocol state
     protocol_t  u;              // remote protocol state

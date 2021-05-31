@@ -105,7 +105,7 @@ dump_ait_map()
                PRId64 ")\n",
             key,
             bp[0], bp[1], bp[2], bp[3], bp[4], bp[5], bp[6], bp[7],
-            (__s64)value);
+            (long int)value);
 
     }
 

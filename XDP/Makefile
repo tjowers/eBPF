@@ -76,3 +76,20 @@ code: code.c
 
 nprocs: nprocs.c
 
+ifndef LINK
+    $(warning "Warning: `LINK' not set in environment, default LINK=enp6s0 for carol")
+    LINK:=enp6s0
+endif
+
+define link
+    sudo ip l set dev $(1) $(2) $(3)
+endef
+
+
+netinit: ; @$(call link,$(LINK),up) && $(call link,$(LINK),multicast,off) && $(call link,$(LINK),allmulticast,off) && echo "$(LINK) ready for transactions"
+
+e1000e:
+	@+ make -C e1000e-3.8.4/src CFLAGS_EXTRA="-DE1000E_NO_NAPI"
+	@+ sudo rmmod e1000e || true
+	@+ sudo insmod e1000e-3.8.4/src/e1000e.ko && echo "e1000e loaded"
+

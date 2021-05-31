@@ -187,7 +187,7 @@ outbound_AIT(link_state_t *link)
         size_t n = strlen(proto_opt.ait);
         link->len = (n > MAX_PAYLOAD) ? MAX_PAYLOAD : n;
         memcpy(link->frame + ETH_HLEN + 2, proto_opt.ait, link->len);
-        LOG_INFO("outbound_AIT (%u of %u)\n", link->len, n);
+        LOG_INFO("outbound_AIT (%u of %lu)\n", link->len, n);
         HEX_INFO(proto_opt.ait, link->len);
         return 1;  // send AIT
     }
@@ -239,7 +239,7 @@ clear_AIT(link_state_t *link)
         } else {
             proto_opt.ait = NULL;
         }
-        LOG_INFO("clear_AIT (%u of %u)\n", link->len, n);
+        LOG_INFO("clear_AIT (%u of %lu)\n", link->len, n);
     }
     link->len = 0;
     return 1;  // success
